@@ -1,0 +1,95 @@
+<!-- <h4>Peliculas en cartelera</h4>
+
+<div class="card-columns">
+    <div class="card">
+        <img
+            class="card-img-top"
+            src="holder.js/100x180/"
+            alt="movie_img.png">
+        <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Text</p>
+        </div>
+    </div>
+    <div class="card">
+        <img
+            class="card-img-top"
+            src="holder.js/100x180/"
+            alt="movie_img2.png">
+        <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Text</p>
+        </div>
+    </div>
+</div>
+
+<h4>Peliculas populares</h4>
+<div class="card-columns">
+    <div class="card">
+        <img
+            class="card-img-top"
+            src="holder.js/100x180/"
+            alt="movie_img.png">
+        <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Text</p>
+        </div>
+    </div>
+    <div class="card">
+        <img
+            class="card-img-top"
+            src="holder.js/100x180/"
+            alt="movie_img2.png">
+        <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Text</p>
+        </div>
+    </div>
+    <div class="card">
+        <img
+            class="card-img-top"
+            src="holder.js/100x180/"
+            alt="movie_img2.png">
+        <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Text</p>
+        </div>
+    </div>
+    <div class="card">
+        <img
+            class="card-img-top"
+            src="holder.js/100x180/"
+            alt="movie_img2.png">
+        <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Text</p>
+        </div>
+    </div>
+    <div class="card">
+        <img
+            class="card-img-top"
+            src="holder.js/100x180/"
+            alt="movie_img2.png">
+        <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Text</p>
+        </div>
+    </div>
+</div> -->
+
+<h4>Pelicular para niños más populares</h4>
+<div class="card-columns">
+    <div
+        class="card"
+        (click)="goToMovie(movie.id)"
+        *ngFor="let movie of childrenMovies">
+        <img
+            class="card-img-top"
+            [src]="baseImg + '/w300' + movie.poster_path"
+            [alt]="movie.poster_path">
+        <div class="card-body">
+            <h4 class="card-title">{{ movie.title }}</h4>
+            <p class="card-text">{{ movie.release_date }}</p>
+        </div>
+    </div>
+</div>

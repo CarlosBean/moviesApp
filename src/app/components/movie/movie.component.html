@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-4">
+        <img
+            *ngIf="movie !== undefined"
+            class="img-fluid img-thumbnail"
+            [src]="baseImg + '/w300' + movie.poster_path"
+            alt="movie.poster_path">
+
+    </div>
+    <div class="card-body col-8">
+        <h4 class="card-title">{{ movie.title }}</h4>
+        <p class="card-text">{{ movie.overview }}</p>
+        <p class="card-text">{{ movie.release_date }}</p>
+        <p class="card-text">{{ movie.popularity }}</p>
+    </div>
+</div>
