@@ -85,8 +85,8 @@
         *ngFor="let movie of childrenMovies">
         <img
             class="card-img-top"
-            [src]="baseImg + '/w300' + movie.poster_path"
-            [alt]="movie.poster_path">
+            [src]="movie.poster_path | noImage:'300'"
+            alt="img_card.jpg">
         <div class="card-body">
             <h4 class="card-title">{{ movie.title }}</h4>
             <p class="card-text">{{ movie.release_date }}</p>

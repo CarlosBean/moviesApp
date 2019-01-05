@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { IMovie } from '../../interfaces/movie';
 import { Router } from '@angular/router';
-import { CONFIG } from '../../app.config';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +11,6 @@ import { CONFIG } from '../../app.config';
 export class HomeComponent implements OnInit {
 
   childrenMovies: IMovie;
-  baseImg = CONFIG.IMG_URL;
 
   constructor(private moviesService: MoviesService, private router: Router) { }
 

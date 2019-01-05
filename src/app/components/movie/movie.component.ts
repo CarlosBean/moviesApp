@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IMovie } from '../../interfaces/movie';
-import { CONFIG } from '../../app.config';
 
 @Component({
   selector: 'app-movie',
@@ -12,14 +11,15 @@ import { CONFIG } from '../../app.config';
 export class MovieComponent implements OnInit {
 
   movie: IMovie;
-  baseImg = CONFIG.IMG_URL;
+  searchWord: string;
 
-  constructor(private moviesService: MoviesService, private route: ActivatedRoute) {
+  constructor(private moviesService: MoviesService, private router: Router, private route: ActivatedRoute) {
     this.movie = {} as IMovie;
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
+      this.searchWord = params.word;
       console.log('PARAM ID', params.id);
       this.moviesService.getMovieById(params.id).subscribe(res => {
         this.movie = res;
@@ -30,5 +30,9 @@ export class MovieComponent implements OnInit {
     }, err => {
       console.log('ERROR', err);
     });
+  }
+
+  goBack() {
+    this.router.navigate(['search', this.searchWord]);
   }
 }

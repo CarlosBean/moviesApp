@@ -3,7 +3,7 @@
         <img
             *ngIf="movie !== undefined"
             class="img-fluid img-thumbnail"
-            [src]="baseImg + '/w300' + movie.poster_path"
+            [src]="movie.poster_path | noImage:'300'"
             alt="movie.poster_path">
 
     </div>
@@ -12,5 +12,11 @@
         <p class="card-text">{{ movie.overview }}</p>
         <p class="card-text">{{ movie.release_date }}</p>
         <p class="card-text">{{ movie.popularity }}</p>
+        <button
+            type="button"
+            class="btn btn-outline-success"
+            (click)="goBack()">
+            Regresar
+        </button>
     </div>
 </div>
