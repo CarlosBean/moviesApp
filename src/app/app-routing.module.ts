@@ -2,12 +2,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './components/home/home.component';
 import { MovieComponent } from './components/movie/movie.component';
+import { SearchComponent } from './components/search/search.component';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'movie/:id', component: MovieComponent },
-    // { path: 'path3', component: Name3Component },
-    // { path: 'path4', component: Name4Component },
+    { path: 'home', component: HomeComponent },
+    { path: 'movie/:id/search/:word', component: MovieComponent },
+    { path: 'search', component: SearchComponent },
+    { path: 'search/:word', component: SearchComponent },
+    { path: 'home', component: HomeComponent },
     { path: '**', component: HomeComponent },
 ];
 
