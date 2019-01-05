@@ -1,0 +1,30 @@
+<div class="form-group">
+    <input
+        type="text"
+        name="searchMovie"
+        class="form-control"
+        placeholder="Buscar película"
+        [(ngModel)]="searchWord"
+        (keyup.enter)="searchMovie()">
+</div>
+
+<div class="card-columns">
+    <div
+        class="card"
+        *ngFor="let movie of movies">
+        <img
+            class="card-img-top"
+            [src]="movie.poster_path | noImage:'300'"
+            alt>
+        <div class="card-body">
+            <h4 class="card-title">{{ movie.title }}</h4>
+            <p class="card-text">{{ movie.overview }}</p>
+            <button
+                class="btn btn-outline-primary btn-block"
+                (click)="goToMovie(movie.id)">
+                Ver más
+            </button>
+        </div>
+    </div>
+
+</div>
