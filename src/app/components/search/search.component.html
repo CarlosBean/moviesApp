@@ -14,11 +14,11 @@
         *ngFor="let movie of movies">
         <img
             class="card-img-top"
-            [src]="movie.poster_path | noImage:'300'"
+            [src]="movie| noImage:'300'"
             alt>
         <div class="card-body">
             <h4 class="card-title">{{ movie.title }}</h4>
-            <p class="card-text">{{ movie.overview }}</p>
+            <p class="card-text">{{ movie.overview | slice:0:250 }} ...</p>
             <button
                 class="btn btn-outline-primary btn-block"
                 (click)="goToMovie(movie.id)">

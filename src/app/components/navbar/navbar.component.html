@@ -14,11 +14,11 @@
         class="collapse navbar-collapse"
         id="collapsibleNavId">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a
                     class="nav-link"
                     [routerLink]="['home']"
-                    routerLinkActive="router-link-active">
+                    routerLinkActive="active">
                     Home
                 </a>
             </li>
@@ -26,7 +26,7 @@
                 <a
                     class="nav-link"
                     [routerLink]="['search']"
-                    routerLinkActive="router-link-active">
+                    routerLinkActive="active">
                     Search
                 </a>
             </li>
@@ -35,12 +35,9 @@
             <input
                 class="form-control mr-sm-2"
                 type="text"
-                placeholder="Search">
-            <button
-                class="btn btn-outline-success my-2 my-sm-0"
-                type="submit">
-                Buscar
-            </button>
+                (keyup.enter)="goToSearch($event.target.value)"
+                placeholder="Type a movie name">
+            <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
         </form>
     </div>
 </nav>

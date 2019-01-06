@@ -33,6 +33,6 @@ export class MovieComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['search', this.searchWord]);
+    this.searchWord ? this.router.navigate(['search', this.searchWord]) : this.router.navigate(['home']);
   }
 }

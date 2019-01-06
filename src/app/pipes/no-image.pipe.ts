@@ -6,12 +6,14 @@ import { environment } from '../../environments/environment';
 })
 export class NoImagePipe implements PipeTransform {
 
-  transform(image: string, width: string): string {
+  transform(movie: any, width: string): string {
 
     let imgPath = 'assets/img/noimage.png';
 
-    if (image) {
-      imgPath = environment.img_url + '/w' + width + image;
+    if (movie.poster_path) {
+      imgPath = environment.img_url + '/w' + width + movie.poster_path;
+    } else if (movie.backdrop_path) {
+      imgPath = environment.img_url + '/w' + width + movie.backdrop_path;
     }
 
     return imgPath;

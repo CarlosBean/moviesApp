@@ -23,6 +23,10 @@ export class SearchComponent implements OnInit {
   }
 
   searchMovie() {
+    if (this.searchWord.length === 0) {
+      return;
+    }
+
     this.moviesService.getMovieByWord(this.searchWord).subscribe(data => {
       this.movies = data.slice(10);
     }, err => {

@@ -3,15 +3,27 @@
         <img
             *ngIf="movie !== undefined"
             class="img-fluid img-thumbnail"
-            [src]="movie.poster_path | noImage:'300'"
+            [src]="movie | noImage:'300'"
             alt="movie.poster_path">
 
     </div>
     <div class="card-body col-8">
         <h4 class="card-title">{{ movie.title }}</h4>
         <p class="card-text">{{ movie.overview }}</p>
-        <p class="card-text">{{ movie.release_date }}</p>
-        <p class="card-text">{{ movie.popularity }}</p>
+        <p class="card-text">
+            Fecha de lanzamiento: {{ movie.release_date }}
+        </p>
+        <p class="card-text">
+            Popularidad:
+            <span class="badge badge-primary">
+                {{ movie.popularity | number:'.0-0'}}/10
+            </span>
+        </p>
+        <p class="card-text">
+            Votación:
+            <span class="badge badge-primary">{{ movie.vote_average}}</span>
+        </p>
+
         <button
             type="button"
             class="btn btn-outline-success"
