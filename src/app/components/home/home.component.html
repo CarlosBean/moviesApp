@@ -1,20 +1,3 @@
-<!-- <h4>Peliculas en Cartelera</h4>
-<div class="card-columns">
-    <div
-        class="card"
-        (click)="goToMovie(movie.id)"
-        *ngFor="let movie of actualMovies">
-        <img
-            class="card-img-top"
-            [src]="movie | noImage:'300'"
-            alt="img_card.jpg">
-        <div class="card-body">
-            <h4 class="card-title">{{ movie.title }}</h4>
-            <p class="card-text">{{ movie.release_date }}</p>
-        </div>
-    </div>
-</div> -->
-
 <app-gallery
     *ngIf="actualMovies"
     [movies]="actualMovies | slice:0:6"
@@ -29,37 +12,3 @@
     *ngIf="childrenMovies"
     [movies]="childrenMovies | slice:0:6"
     title="Peliculas para niños"></app-gallery>
-
-<!-- <h4>Peliculas Populares</h4>
-<div class="card-columns">
-    <div
-        class="card"
-        (click)="goToMovie(movie.id)"
-        *ngFor="let movie of popularMovies">
-        <img
-            class="card-img-top"
-            [src]="movie | noImage:'300'"
-            alt="img_card.jpg">
-        <div class="card-body">
-            <h4 class="card-title">{{ movie.title }}</h4>
-            <p class="card-text">{{ movie.release_date }}</p>
-        </div>
-    </div>
-</div>
-
-<h4>Peliculas para Niños</h4>
-<div class="card-columns">
-    <div
-        class="card"
-        (click)="goToMovie(movie.id)"
-        *ngFor="let movie of childrenMovies">
-        <img
-            class="card-img-top"
-            [src]="movie| noImage:'300'"
-            alt="img_card.jpg">
-        <div class="card-body">
-            <h4 class="card-title">{{ movie.title }}</h4>
-            <p class="card-text">{{ movie.release_date }}</p>
-        </div>
-    </div>
-</div> -->
