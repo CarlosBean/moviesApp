@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MovieComponent } from './components/movie/movie.component';
 import { SearchComponent } from './components/search/search.component';
 import { NoImagePipe } from './pipes/no-image.pipe';
+import { GalleryComponent } from './components/home/gallery.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NoImagePipe } from './pipes/no-image.pipe';
     NavbarComponent,
     MovieComponent,
     SearchComponent,
-    NoImagePipe
+    GalleryComponent,
+    NoImagePipe,
   ],
   imports: [
     BrowserModule,
