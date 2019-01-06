@@ -12,8 +12,8 @@ export class MoviesService {
   constructor(private http: HttpClient) { }
 
   getUrl(uri: string): Observable<any> {
-    const URL = `${environment.api_url + uri}&api_key=${environment.api_key}&language=es`;
-    return this.http.get(URL);
+    const URL = `${environment.api_url + uri}&api_key=${environment.api_key}&language=${environment.language}`;
+    return this.http.jsonp(URL, 'callback=JSONP_CALLBACK');
   }
 
   getActualMovies(): Observable<any> {
@@ -23,18 +23,20 @@ export class MoviesService {
     const gteDate = this.formatDate(monthsAgo);
     const lteDate = this.formatDate(new Date());
 
-    return this.http.get(`/discover/movie?primary_release_date.gte=${gteDate}&primary_release_date.lte=${lteDate}`)
-      .pipe(map(res => res, err => err));
+    console.log('dates --', gteDate, '---', lteDate);
+
+    return this.getUrl(`/discover/movie?primary_release_date.gte=${gteDate}&primary_release_date.lte=${lteDate}`)
+      .pipe(map(res => res['results']));
   }
 
   getPopularMovies() {
     return this.getUrl('/discover/movie?sort_by=popularity.desc')
-      .pipe(map(res => res, err => err));
+      .pipe(map(res => res['results']));
   }
 
   getChildrenMovies(): Observable<any> {
     return this.getUrl('/discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc')
-      .pipe(map(res => res, err => err));
+      .pipe(map(res => res['results']));
   }
 
   getMovieById(idMovie: number): Observable<any> {
@@ -58,7 +60,13 @@ export class MoviesService {
       numMonths = numMonths % 12;
     }
 
-    const month = minuend.getMonth() === 0 ? 12 - numMonths : minuend.getMonth() - numMonths;
+    let month = minuend.getMonth() - numMonths;
+
+    if (minuend.getMonth() === 0) {
+      month = 12 - numMonths;
+      years++;
+    }
+
     const year = years > 0 ? minuend.getFullYear() - years : minuend.getFullYear();
 
     minuend.setMonth(month);
@@ -68,6 +76,19 @@ export class MoviesService {
   }
 
   formatDate(date: Date): string {
-    return `${date.getFullYear}-${date.getMonth}-${date.getDay}`;
+
+    const yyyy = String(date.getFullYear());
+    let mm = String(date.getMonth() + 1);
+    let dd = String(date.getDay());
+
+    if (date.getMonth() + 1 < 10) {
+      mm = '0' + mm;
+    }
+
+    if (date.getDay() < 10) {
+      dd = '0' + dd;
+    }
+
+    return `${yyyy}-${mm}-${dd}`;
   }
 }
