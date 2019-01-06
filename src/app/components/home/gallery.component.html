@@ -1,0 +1,51 @@
+<h4>{{ title }}</h4>
+<div class="row animated fadeIn fast mb-5">
+    <div class="col-6">
+        <div class="row">
+            <div
+                class="col-12 div-pic-1 pointer"
+                [routerLink]="['/movie', movies[0].id]"
+                [ngStyle]="{ 'background-image': 'url('+ (movies[0] | noImage:'500') +')' }">
+                <p class="pic-title">{{ movies[0].original_title}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div
+                class="col-6 div-pic-2 pointer"
+                [routerLink]="['/movie', movies[1].id]"
+                [ngStyle]="{ 'background-image': 'url('+ (movies[1] | noImage:'300') +')' }">
+                <p class="pic-title">{{ movies[1].original_title}}</p>
+            </div>
+            <div
+                class="col-6 div-pic-2 pointer"
+                [routerLink]="['/movie', movies[2].id]"
+                [ngStyle]="{ 'background-image': 'url('+ (movies[2] | noImage:'300') +')' }">
+                <p class="pic-title">{{ movies[2].original_title}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div
+                class="col-6 div-pic-2 pointer"
+                [routerLink]="['/movie', movies[3].id]"
+                [ngStyle]="{ 'background-image': 'url('+ (movies[3] | noImage:'300') +')' }">
+                <p class="pic-title">{{ movies[3].original_title}}</p>
+            </div>
+            <div
+                class="col-6 div-pic-2 pointer"
+                [routerLink]="['/movie', movies[4].id]"
+                [ngStyle]="{ 'background-image': 'url('+ (movies[4] | noImage:'300') +')' }">
+                <p class="pic-title">{{ movies[4].original_title}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div
+                class="col-12 div-pic-1 pointer"
+                [routerLink]="['/movie', movies[5].id]"
+                [ngStyle]="{ 'background-image': 'url('+ (movies[5] | noImage:'500') +')' }">
+                <p class="pic-title">{{ movies[5].original_title}}</p>
+            </div>
+        </div>
+    </div>
+</div>
