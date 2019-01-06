@@ -1,91 +1,44 @@
-<!-- <h4>Peliculas en cartelera</h4>
-
-<div class="card-columns">
-    <div class="card">
-        <img
-            class="card-img-top"
-            src="holder.js/100x180/"
-            alt="movie_img.png">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-    </div>
-    <div class="card">
-        <img
-            class="card-img-top"
-            src="holder.js/100x180/"
-            alt="movie_img2.png">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-    </div>
-</div>
-
-<h4>Peliculas populares</h4>
-<div class="card-columns">
-    <div class="card">
-        <img
-            class="card-img-top"
-            src="holder.js/100x180/"
-            alt="movie_img.png">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-    </div>
-    <div class="card">
-        <img
-            class="card-img-top"
-            src="holder.js/100x180/"
-            alt="movie_img2.png">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-    </div>
-    <div class="card">
-        <img
-            class="card-img-top"
-            src="holder.js/100x180/"
-            alt="movie_img2.png">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-    </div>
-    <div class="card">
-        <img
-            class="card-img-top"
-            src="holder.js/100x180/"
-            alt="movie_img2.png">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-    </div>
-    <div class="card">
-        <img
-            class="card-img-top"
-            src="holder.js/100x180/"
-            alt="movie_img2.png">
-        <div class="card-body">
-            <h4 class="card-title">Title</h4>
-            <p class="card-text">Text</p>
-        </div>
-    </div>
-</div> -->
-
-<h4>Pelicular para niños más populares</h4>
+<!-- <h4>Peliculas en Cartelera</h4>
 <div class="card-columns">
     <div
         class="card"
         (click)="goToMovie(movie.id)"
-        *ngFor="let movie of childrenMovies">
+        *ngFor="let movie of actualMovies">
         <img
             class="card-img-top"
-            [src]="movie.poster_path | noImage:'300'"
+            [src]="movie | noImage:'300'"
+            alt="img_card.jpg">
+        <div class="card-body">
+            <h4 class="card-title">{{ movie.title }}</h4>
+            <p class="card-text">{{ movie.release_date }}</p>
+        </div>
+    </div>
+</div> -->
+
+<app-gallery
+    *ngIf="actualMovies"
+    [movies]="actualMovies | slice:0:6"
+    title="Peliculas en cartelera"></app-gallery>
+
+<app-gallery
+    *ngIf="popularMovies"
+    [movies]="popularMovies | slice:0:6"
+    title="Peliculas Populares"></app-gallery>
+
+<app-gallery
+    *ngIf="childrenMovies"
+    [movies]="childrenMovies | slice:0:6"
+    title="Peliculas para niños"></app-gallery>
+
+<!-- <h4>Peliculas Populares</h4>
+<div class="card-columns">
+    <div
+        class="card"
+        (click)="goToMovie(movie.id)"
+        *ngFor="let movie of popularMovies">
+        <img
+            class="card-img-top"
+            [src]="movie | noImage:'300'"
             alt="img_card.jpg">
         <div class="card-body">
             <h4 class="card-title">{{ movie.title }}</h4>
@@ -93,3 +46,20 @@
         </div>
     </div>
 </div>
+
+<h4>Peliculas para Niños</h4>
+<div class="card-columns">
+    <div
+        class="card"
+        (click)="goToMovie(movie.id)"
+        *ngFor="let movie of childrenMovies">
+        <img
+            class="card-img-top"
+            [src]="movie| noImage:'300'"
+            alt="img_card.jpg">
+        <div class="card-body">
+            <h4 class="card-title">{{ movie.title }}</h4>
+            <p class="card-text">{{ movie.release_date }}</p>
+        </div>
+    </div>
+</div> -->

@@ -10,14 +10,30 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  childrenMovies: IMovie;
+  childrenMovies: IMovie[];
+  actualMovies: IMovie[];
+  popularMovies: IMovie[];
 
   constructor(private moviesService: MoviesService, private router: Router) { }
 
   ngOnInit() {
+    this.moviesService.getActualMovies().subscribe(res => {
+      this.actualMovies = res;
+      console.log('RESPONSE', res);
+    }, err => {
+      console.log('ERROR', err);
+    });
+
+    this.moviesService.getPopularMovies().subscribe(res => {
+      this.popularMovies = res;
+      console.log('RESPONSE', res);
+    }, err => {
+      console.log('ERROR', err);
+    });
+
     this.moviesService.getChildrenMovies().subscribe(res => {
-      this.childrenMovies = res.results.slice(0, 6);
-      console.log('RESPONSE', res.results);
+      this.childrenMovies = res;
+      console.log('RESPONSE', res);
     }, err => {
       console.log('ERROR', err);
     });
